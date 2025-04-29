@@ -12,7 +12,7 @@ const ForgotPass = () => {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/route/forgot-password', { email });
+      const response = await axios.post(`${process.env.REACT_APP_URL}/route/forgot-password`, { email });
       setMessage(response.data.message); // Assuming backend sends message on success
     } catch (error) {
       setMessage(error.response?.data?.message || 'Something went wrong');

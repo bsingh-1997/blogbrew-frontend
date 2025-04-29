@@ -39,7 +39,7 @@ const Login = () => {
   return (
     <div className='divcont'>
 
-    <div className="login-container" style={{width:'50%'}} style={{display:'flex',flexDirection:'column',gap:'1vh', width:'100%',}}>
+    <div className="login-container" style={{display:'flex',flexDirection:'column',gap:'1vh', width:'100%',}}>
       <h1>Login</h1>
       <form style={{width:'80%'}} onSubmit={handleLogin}>
         

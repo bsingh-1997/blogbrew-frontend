@@ -785,7 +785,7 @@ const UserDashboard = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/${editingPost}`,
+        `${process.env.REACT_APP_URL}/api/${editingPost}`,
         formData,
         {
           headers: {
@@ -807,7 +807,7 @@ const UserDashboard = () => {
   const handleDelete = async (postId) => {
     try {
       const storedUser = JSON.parse(localStorage.getItem('user'));
-      await axios.delete(`http://localhost:5000/api/${postId}`, {
+      await axios.delete(`${process.env.REACT_APP_URL}/api/${postId}`, {
         headers: {
           Authorization: `Bearer ${storedUser.token}`,
         },
@@ -865,7 +865,7 @@ const UserDashboard = () => {
   const fetchUserPosts = async (userId, isAdmin) => {
     try {
       // Fetch all posts if user is admin
-      const res = await axios.get('http://localhost:5000/api/');
+      const res = await axios.get(`${process.env.REACT_APP_URL}/api/`);
       let userSpecificPosts = res.data;
 
       if (!isAdmin) {
@@ -891,7 +891,7 @@ const UserDashboard = () => {
       formData.append('category', category);
       if (image) formData.append('image', image);
 
-      await axios.post('http://localhost:5000/api', formData, {
+      await axios.post(`${process.env.REACT_APP_URL}/api`, formData, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
           'Content-Type': 'multipart/form-data',

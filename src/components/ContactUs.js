@@ -34,7 +34,7 @@ const ContactUs = () => {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/route/contactus', formData);
+      await axios.post(`${process.env.REACT_APP_URL}/route/contactus`, formData);
       alert('Your message has been sent!');
       setFormData({
         name: isLoggedIn ? storedUser.name : '',

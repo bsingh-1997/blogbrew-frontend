@@ -81,7 +81,7 @@ const AllBlogs = () => {
     setLoadingsub(true)
     setSubscribed(false)
     try {
-      const res = await axios.post('http://localhost:5000/route/subscribetonewsletter', { email });
+      const res = await axios.post(`${process.env.REACT_APP_URL}/route/subscribetonewsletter`, { email });
 
       setSubscribed(true);
       setEmail(''); // Clear the email input after successful subscription
@@ -155,7 +155,7 @@ const AllBlogs = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/api/posts/${postId}/like`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/like`,
         {},
         {
           headers: {
@@ -179,7 +179,7 @@ const AllBlogs = () => {
       if (!token) return;
 
       await axios.put(
-        `http://localhost:5000/api/posts/${postId}/dislike`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/dislike`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -203,7 +203,7 @@ const AllBlogs = () => {
 
   return (
     <div>
-      {/* <HeroCarousel /> */}
+      <HeroCarousel />
       <div className='HomeContainer'>
 
         <div ref={blogSectionRef} className='LeftHomeSection'>

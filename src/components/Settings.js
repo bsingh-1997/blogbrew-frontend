@@ -117,7 +117,7 @@ const Settings = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       console.log(user.token)
-      const res = await axios.put('http://localhost:5000/api/profile', formData, {
+      const res = await axios.put(`${process.env.REACT_APP_URL}/api/profile`, formData, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

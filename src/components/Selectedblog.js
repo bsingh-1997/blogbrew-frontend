@@ -35,7 +35,7 @@ const SelectedBlog = () => {
 
   const fetchBlog = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_URL}/api/${id}`);
       setBlog(res.data);
     } catch (err) {
       console.error('Error fetching blog:', err);
@@ -55,7 +55,7 @@ const SelectedBlog = () => {
       if (!token) return;
 
       await axios.put(
-        `http://localhost:5000/api/posts/${postId}/like`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/like`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -77,7 +77,7 @@ const SelectedBlog = () => {
   
       // Send a DELETE request to remove the comment
       const response = await axios.delete(
-        `http://localhost:5000/api/posts/${postId}/comments/${commentId}`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/comments/${commentId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -101,7 +101,7 @@ const SelectedBlog = () => {
       if (!token) return;
 
       await axios.put(
-        `http://localhost:5000/api/posts/${postId}/dislike`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/dislike`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -128,7 +128,7 @@ const SelectedBlog = () => {
       if (!token || !text.trim()) return;
 
       const response = await axios.post(
-        `http://localhost:5000/api/posts/${postId}/comments`,
+        `${process.env.REACT_APP_URL}/api/posts/${postId}/comments`,
         { text },
         {
           headers: { Authorization: `Bearer ${token}` },
