@@ -366,7 +366,7 @@ const AllBlogs = () => {
               .sort((a, b) => b.likes.length - a.likes.length) // sort by most likes
               .slice(0, 3) // take top 3
               .map((post) => (
-                <Link style={{ textDecoration: 'none', color: 'black' }} key={post._id} to={`http://localhost:3000/blog/${post._id}`}>
+                <Link style={{ textDecoration: 'none', color: 'black' }} key={post._id} to={`${process.env.REACT_APP_URL}/blog/${post._id}`}>
                   <div className='ppdetails' key={post._id}>
                     <div className='ppimdg'>
                       <img className='ppimg' src={post.image || 'fallback-image-url.jpg'} alt={post.title} />
@@ -482,7 +482,7 @@ const AllBlogs = () => {
                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // latest first
                 .slice(0, 3) // get only top 3
                 .map((post) => (
-                  <Link style={{ textDecoration: 'none', color: 'black' }} to={`http://localhost:3000/blog/${post._id}`}>
+                  <Link style={{ textDecoration: 'none', color: 'black' }} to={`${process.env.REACT_APP_URL}/blog/${post._id}`}>
                     <div className='postsr' key={post._id}>
                       <img
                         className='postrimg'
