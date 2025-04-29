@@ -1,0 +1,88 @@
+//     <div className='navbar'>
+//       {/* <ul>
+//         {userInfo && <li><Link to="/dashboard">Dashboard</Link></li>}
+//         <li><Link to="/allblogs">All Blogs</Link></li>
+//         <li><Link to="/home">About</Link></li>
+//       </ul> */}
+
+//       <div style={{ position: 'relative' }}>
+//         <li>
+//           {userInfo ? (
+//             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+//               {/* User Image */}
+//               {/* <img
+//                 src={userInfo.image || defaultAvatar}
+//                 alt="User"
+//                 onClick={toggleDropdown} // Toggle the dropdown on image click
+//                 style={{
+//                   width: '35px',
+//                   height: '35px',
+//                   borderRadius: '50%',
+//                   objectFit: 'cover',
+//                   border: '1px solid #ccc',
+//                   cursor: 'pointer',
+//                 }}
+//               /> */}
+//               {/* Dropdown Menu */}
+//               {dropdownVisible && (
+//                 <div
+//                   className="dropdown-menu"
+//                   style={{
+//                     position: 'absolute',
+//                     top: '50px',
+//                     right: '0',
+//                     backgroundColor: '#fff',
+//                     border: '1px solid #ddd',
+//                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+//                     padding: '10px',
+//                     borderRadius: '5px',
+//                     minWidth: '200px',
+//                   }}
+//                 >
+//                   {/* Display "Admin Account" if isAdmin is true */}
+//                   <div style={{ marginBottom: '10px', fontWeight: 'bold', color: 'red' }}>
+//   {userInfo.isAdmin ? "Admin Account" : "User Account"}
+// </div>
+
+//                   {/* {userInfo.isAdmin && (
+//                     <div style={{ marginBottom: '10px', fontWeight: 'bold', color: 'red' }}>
+//                       Admin Account
+//                     </div>
+//                   )} */}
+                  
+//                   <div style={{ marginBottom: '10px' }}>
+//                   <img
+//                 src={userInfo.image || defaultAvatar}
+//                 alt="User"
+//                 onClick={toggleDropdown} // Toggle the dropdown on image click
+//                 style={{
+//                   width: '35px',
+//                   height: '35px',
+//                   borderRadius: '50%',
+//                   objectFit: 'cover',
+//                   border: '1px solid #ccc',
+//                   cursor: 'pointer',
+//                 }}/>
+//                     <strong>Name:</strong> {userInfo.name}
+//                   </div>
+//                   <div style={{ marginBottom: '10px' }}>
+//                     <strong>Email:</strong> {userInfo.email}
+//                   </div>
+//                   <button onClick={handleLogout} style={{ padding: '8px 16px', width: '100%' }}>
+//                     Logout
+//                   </button>
+//                 </div>
+//               )}
+//             </div>
+//           ) : (
+//             <button onClick={handleLogin} style={{ padding: '8px 16px' }}>
+//               Login
+//             </button>
+//           )}
+//         </li>
+//       </div>
+//     {/* </div> */}
+// {/* </div> */}
+
+
+

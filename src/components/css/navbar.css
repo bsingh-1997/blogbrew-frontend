@@ -1,0 +1,113 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+.NavBar{
+    /* background-color: darkgray; */
+    padding-top: 1vh;
+    padding-right: 2vw;
+    padding-left: 2vw;
+}
+.firstlayer{
+/* background-color: aqua; */
+display: flex;
+justify-content: space-between;
+}
+.navLogos{
+    display: flex;
+    gap: .8vw;
+        
+}
+ .navLogos :hover{
+    color: orangered;
+     text-decoration: underline; 
+ }  
+.secondlayer{
+    display: flex;
+    justify-content: center;
+}
+
+.thirdlayer{
+    /* background-color: blue; */
+}
+.nav-btns{
+    display: flex;
+    gap: 3vw;
+    justify-content: center;
+}
+.nav-btns a{
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+}
+.nav-btns a:hover {
+    color: orangered;
+    /* text-decoration: underline; */
+  }
+li{
+    list-style: none;
+    font-size: 1.2rem;
+    
+}
+.drop{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 1vh;
+    
+    /* background-color: aqua; */
+    /* justify-content: flex-end; */
+}
+.dropcontainer{
+    width: 60%;
+    margin: auto;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: end;
+}
+.ham{
+    display: none;
+}
+
+@media screen and (max-width:580px) {
+    .ham{
+        display: block;
+    }
+    /* .nav-btns{
+        display: none;
+        flex-direction: column;
+        gap: 3vw;
+        justify-content: center;
+    } */
+    .thirdlayer{
+        display: none;
+    }
+    .nav-btns{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+        /* align-items: center; */
+    }
+    .isopen{
+        /* background-color: aqua; */
+        display: flex;
+        flex-direction: column;
+    }
+    .userdetailsweb{
+        display: none;
+    }
+    .drop{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    .drop1{
+        display: flex;
+        gap: 3vw;
+        width: 100%;
+        /* background-color: red; */
+    }
+   
+
+}

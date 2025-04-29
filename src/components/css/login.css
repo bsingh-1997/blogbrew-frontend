@@ -1,0 +1,52 @@
+.login-container{
+    
+}
+.divcont{
+    display: flex;
+    align-items: center;
+    width: 30%;
+    margin-left: 10%;
+}
+.signupform{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 30%;
+}
+.forgpass{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 5vh;
+}
+.inpfp{
+    height:5vh;
+    width:30%;
+    border:.5px solid grey;
+    border-radius:4px;
+    margin-bottom:2vh;
+    padding:.4vh;
+}
+
+
+@media screen and (max-width:580px) {
+    .divcont{
+        
+        width: 80%;
+
+    }
+    .signupform{
+width: 80%;
+    }
+    .forgpass{
+        /* align-items: center; */
+    }
+    .inpfp{
+        width: 80%;
+        /* align-items: center; */
+        /* justify-content: center; */
+        /* margin: auto; */
+    }
+}

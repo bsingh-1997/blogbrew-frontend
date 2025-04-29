@@ -1,0 +1,139 @@
+.footer{
+    /* width: 90%; */
+    /* padding-left: 5%; */
+    /* margin: auto; */
+    /* margin-left: 10%; */
+    background-color: rgb(54, 52, 71);
+    margin-top: 10vh;
+}
+.footer1{
+    height: 40vh;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 15vw;
+    /* align-items: center; */
+    color: white;
+    padding-top: 3%;
+}
+
+.footer2{
+    background-color: rgb(54, 53, 82);
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: rgb(172, 172, 172);
+    align-items: center;
+}
+
+.sec1{
+    /* background-color: aqua; */
+    display: flex;
+    gap: 3vh;
+    flex-direction: column;
+    
+}
+.cats{
+    display: flex;
+    gap: 5vw;
+    color: rgb(172, 172, 172);
+    /* color: rgb(172, 172, 172); */
+}
+.grey{
+    color: rgb(172, 172, 172);
+    
+
+}
+.sec2{
+    /* background-color: aqua;   */
+    display: flex;
+    gap: 3vh;
+    flex-direction: column;
+}
+.sec3{
+    /* background-color: aqua; */
+    display: flex;
+    gap: 6vh;
+    flex-direction: column;
+}
+.fbtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.f2sec1{
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.f2sec1 a{
+    color: rgb(172, 172, 172);
+    text-decoration: none;
+}
+.f2sec1 a:hover{
+    color: orangered;
+}
+
+@media screen and (max-width:580px) {
+    .footer1{
+        width: 90%;
+        flex-direction: column;
+        gap: 0%;
+        height: 50vh;
+        margin: auto;
+    }
+    .sec1{
+        gap: 0;
+    }
+    .sec2{
+        gap: 0;
+    }
+    .sec3{
+        gap: 2vh;
+    }
+    .logos{
+        gap: 8vw;
+    }
+    .fbtn {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex
+    ;
+        justify-content: center;
+        align-items: center;
+        /* display: none; */
+        
+    }
+    .footer2 {
+        background-color: rgb(54, 53, 82);
+        /* height: 15vh; */
+        display: flex
+    ;
+        justify-content: space-between;
+        padding-left: 2%;
+        padding-right: 2%;
+        color: rgb(172, 172, 172);
+        align-items: center;
+        flex-direction: column;
+        font-size: .8rem;
+    }
+    .f2sec1 a{
+        color: rgb(172, 172, 172);
+        text-decoration: none;
+    }
+    .arrow{
+        /* size: 20px; */
+    }
+    .a{
+        display: none;
+    }
+    
+}
