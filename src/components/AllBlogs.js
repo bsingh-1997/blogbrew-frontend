@@ -503,7 +503,7 @@ const AllBlogs = () => {
       </div>
 
       {/* Pagination Buttons */}
-      <div style={{ textAlign: 'center', marginTop: '10vh', maxWidth:'90%', margin:'auto' ,display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{ textAlign: 'center', marginTop: '10vh', maxWidth:'90%', marginLeft:'auto',marginRight:'auto' ,display:'flex',alignItems:'center',justifyContent:'center'}}>
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
