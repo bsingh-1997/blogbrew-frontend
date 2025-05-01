@@ -71,16 +71,19 @@
 } */
 .userImage {
     /* height: 7vh; */
-    /* width: 7vh;              👈 Make width equal to height */
-    border-radius: 50%;      /* 👈 This makes it a perfect circle */
+    /* width: 7vh;    
+    border-radius: 50%;   
     height: 50px;
     width: 50px;
-    object-fit: cover;       /* 👈 Ensures the image doesn't stretch */
+    object-fit: cover;       
   }
   .BlogLikes{
     /* background-color: aqua; */
     /* display: flex; */
-    width: 3vw;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
     /* background-color: bisque; */
   }
 h1{
@@ -196,17 +199,20 @@ h1{
 display: flex;
 align-items: center;
 gap: 1vw;
+max-width: 100%;
 }
 .ppimg{
-    height: 11vh;
-    width: 5.5vw;
-    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 .ppod{
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: left;
+    max-width: 70%;
     /* color: #a0a0a0; */
 }
 .popularsec{
@@ -269,9 +275,6 @@ gap: 1vw;
 
 
 
-.comments{
-    /* background-color: aqua; */
-}
 .comment{
     display: flex;
     /* background-color: blue; */
@@ -300,10 +303,25 @@ gap: 1vw;
 }
 
 
+.comments{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+.addcmnt{
+    
+        width:25vw;
+        min-height:5vh;
+        
+        padding:2vh;
+        border:0.5px solid grey;
+        border-radius:40px;
+         /* color:red; */
+      
+}
+
 @media screen and (max-width: 580px) {
-    body {
-      /* background-color: lightgreen; */
-    }
+    
     .HomeContainer{
         /* background-color: blue; */
         display: flex;
@@ -339,6 +357,9 @@ gap: 1vw;
    .BlogContainer{
     gap: 4vh;
    }
+   .BlogContainerforidblog{
+    /* display: none;   */
+   }
    .RightHomeSection{
     width: 97%;
     margin: auto;
@@ -371,6 +392,11 @@ gap: 1vw;
     overflow: hidden;
     height: 30vh;
 }
+.addcmnt{
+    /* background-color: aqua; */
+    width: 70vw;
+}
+
 
 
   }

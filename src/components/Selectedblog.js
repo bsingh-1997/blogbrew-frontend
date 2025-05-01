@@ -9,25 +9,8 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { FaArrowCircleUp } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Loader from './Loader';
-
+import './css/allblogs.css'
 const SelectedBlog = () => {
-
-
-
-//   const location = useLocation();
-
-// useEffect(() => {
-//   if (location.hash === '#comments') {
-//     const el = document.getElementById('comments');
-//     if (el) {
-//       el.scrollIntoView({ behavior: 'smooth' });
-//     }
-//   }
-// }, [location]);
-
-
-
-
 
   const { id } = useParams();
   const [blog, setBlog] = useState();
@@ -86,11 +69,6 @@ const SelectedBlog = () => {
         }
       );
   
-      // Update the blog state with the updated comments
-      // setBlog((prevBlog) => ({
-      //   ...prevBlog,
-      //   comments: response.data,
-      // }));
       fetchBlog()
     } catch (error) {
       console.error('Error deleting comment:', error);
@@ -118,12 +96,6 @@ const SelectedBlog = () => {
   };
 
 
-  // const loggedInUser = JSON.parse(localStorage.getItem('user'));
-  // const isPostOwner = blog.user._id.toString() === req.user.id;
-  // const currentUser = JSON.parse(localStorage.getItem('user'));
-  // const currentUser = JSON.parse(localStorage.getItem('user'));
-  // const isPostOwner = blog.user === currentUser?._id;
-  
   const commentOnPost = async (postId, text) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -140,11 +112,7 @@ const SelectedBlog = () => {
 
       const updatedComments = response.data;
 
-      // setBlog((prevBlog) => ({
-      //   ...prevBlog,
-      //   comments: updatedComments,
-      // }));
-
+  
       fetchBlog()
       setCommentText((prev) => ({ ...prev, [postId]: "" }));
     } catch (error) {
@@ -157,86 +125,9 @@ const SelectedBlog = () => {
       window.scrollTo(0, 0);
     }, []);
   
-    // ... rest of your code
   
-  // const location = useLocation();
-  // const navigate = useNavigate();
-  
-  // useEffect(() => {
-  //   if (location.hash === '#comments') {
-  //     const el = document.getElementById('comments');
-  //     if (el) {
-  //       el.scrollIntoView({ behavior: 'smooth' });
-  //     }
-  //   } else {
-  //     window.scrollTo(0, 0);
-  //   }
-  // }, [location]);
-
-  // useEffect(() => {
-  //   if (location.hash === '#comments') {
-  //     setTimeout(() => {
-  //       const el = document.getElementById('comments');
-  //       if (el) {
-  //         el.scrollIntoView({ behavior: 'smooth' });
-  //       }
-  //     }, 100); // small delay to ensure rendering
-  //   } else {
-  //     window.scrollTo({ top: 0, behavior: 'smooth' });
-  //   }
-  // }, [location]);
-
-
-  
-  // useEffect(() => {
-  //   if (location.hash === '#comments') {
-  //     // Prevent default hash behavior
-  //     useNavigate.replace(location.pathname); // remove #comments from URL temporarily
-  
-  //     setTimeout(() => {
-  //       const el = document.getElementById('comments');
-  //       if (el) {
-  //         el.scrollIntoView({ behavior: 'smooth' });
-  
-  //         // Optionally re-add the hash to the URL after scroll
-  //         useNavigate.replace(`${location.pathname}#comments`);
-  //       }
-  //     }, 100); // wait for DOM to settle
-  //   } else {
-  //     window.scrollTo({ top: 0, behavior: 'smooth' });
-  //   }
-  // }, [location]);
-  
-
-
-  
-  // useEffect(() => {
-  //   if (location.hash === '#comments') {
-  //     // Remove hash from URL temporarily
-  //     navigate(location.pathname, { replace: true });
-
-  //     // Scroll after short delay
-  //     setTimeout(() => {
-  //       const commentSection = document.getElementById('comments');
-  //       if (commentSection) {
-  //         commentSection.scrollIntoView({ behavior: 'smooth' });
-
-  //         // Optional: restore hash to URL if needed
-  //         navigate(`${location.pathname}#comments`, { replace: true });
-  //       }
-  //     }, 100);
-  //   } else {
-  //     window.scrollTo({ top: 0, behavior: 'smooth' });
-  //   }
-  // }, [location, navigate]);
-
-
-
   
   if (!blog) return <Loader/>;
-  // console.log(blog)
-
-
   
 
   return (
@@ -269,27 +160,14 @@ const SelectedBlog = () => {
 
         {/* Comments section */}
         <div  className='comments'>
-          {/* {blog.comments?.map((comment, idx) => (
-            <div key={idx} className="comment">
-              <p><strong>{comment.user?.name || 'Anonymous'}:</strong> {comment.text}
-              
-                 {comment.user?._id === JSON.parse(localStorage.getItem('user'))?._id && (
-            <button onClick={() => deleteComment(blog._id, comment._id)}>
-              Delete
-            </button>
-          )}
-              
-              </p>
-              <small>{new Date(comment.createdAt).toLocaleString()}</small>
-            </div>
-          ))} */}
+    
           <h2>Comments <FaRegCommentDots /> </h2>
 
 {Array.isArray(blog.comments) &&
   blog.comments.map((comment, idx) => (
     <div key={idx} className="comment">
       <div className='cmntimg'>
-      <img style={{height:"50px",width:'50px',borderRadius:'50%'}} src={comment.user.image}/>
+      <img style={{height:"50px",width:'50px',borderRadius:'50%',objectFit:'cover'}} src={comment.user.image || 'https://icon-library.com/images/generic-user-icon/generic-user-icon-13.jpg'}/>
       </div>
       <div className='cmntdata'>
 
@@ -306,21 +184,8 @@ const SelectedBlog = () => {
         )}
       </p>
       </div>
-        {/* {(comment.user?._id === loggedInUser?._id || blog.user?._id === loggedInUser?._id) && (
-  <button onClick={() => deleteComment(blog._id, comment._id)}>
-  Delete
-  </button>
-)} */}
-{/* {(comment.user?._id === user?._id || blog.user?._id === user?._id) && (
-  <button onClick={() => deleteComment(blog._id, comment._id)}>Delete</button>
-)} */}
-{/* {(comment.user?._id === currentUser?._id || isPostOwner) && (
-  <button onClick={() => deleteComment(blog._id, comment._id)}>
-    Delete
-  </button>
-)} */}
-
-      {/* </p>  */}
+      
+    
     </div>
 ))}
 
@@ -333,14 +198,7 @@ const SelectedBlog = () => {
 
   
         {/* Add Comment Input */}
-        <input id='comments'  style={{
-          width:'25vw',
-          minHeight:'5vh',
-          padding:'2vh',
-          border:'0.5px solid grey',
-          borderRadius:'40px',
-          // color:'red'
-        }}
+        <input id='comments' className='addcmnt' 
           type="text"
           placeholder="Add a comment"
           value={commentText[blog._id] || ""}
@@ -348,16 +206,7 @@ const SelectedBlog = () => {
             setCommentText((prev) => ({ ...prev, [blog._id]: e.target.value }))
           }
         />
-        {/* <div style={{
-          // width:'8vw',
-          // minHeight:'10vh',
-          // padding:'2vh',
-          // border:'none'
-          color:'blue',
-          // backgroundColor:'red'
-        }} onClick={() => commentOnPost(blog._id, commentText[blog._id])}>
-          < FaArrowCircleUp size='8vh'/>
-        </div> */}
+        
         
 {commentText[blog._id]?.trim() && (
   <div

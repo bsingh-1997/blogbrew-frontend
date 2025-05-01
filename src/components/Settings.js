@@ -1,81 +1,119 @@
+
 // import React, { useState } from 'react';
 // import axios from 'axios';
+// import { Link } from 'react-router-dom';
 
-// const Settings = ({ token }) => {
+// const Settings = () => {
 //   const [name, setName] = useState('');
 //   const [email, setEmail] = useState('');
 //   const [image, setImage] = useState(null);
 //   const [removeImage, setRemoveImage] = useState(false);
 //   const [oldPassword, setOldPassword] = useState('');
 //   const [password, setPassword] = useState('');
-//   const [message, setMessage] = useState('');
-// const [error, setError] = useState('');
 
-//   const userInfo = JSON.parse(localStorage.getItem('user'));
+//   const [message, setMessage] = useState('');
+//   const [error, setError] = useState('');
+
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-
+    
 //     const formData = new FormData();
-//     if (name) formData.append('name', name);
-//     if (email) formData.append('email', email);
+
+//     if (name.trim()) formData.append('name', name);
+//     if (email.trim()) formData.append('email', email);
 //     if (image) formData.append('image', image);
-//     if (removeImage) formData.append('removeImage', true);
+//     if (removeImage) formData.append('removeImage', 'true');
 //     if (oldPassword && password) {
 //       formData.append('oldPassword', oldPassword);
 //       formData.append('password', password);
 //     }
 
-//     // try {
-//     //   const res = await axios.put('http://localhost:5000/api/profile', formData, {
-//     //     headers: {
-//     //       Authorization: `Bearer ${token}`,
-//     //     },
-//     //   });
-//     //   console.log('Profile updated:', res.data);
-//     // } catch (err) {
-//     //   console.error('Error updating profile:', err);
-//     // }
 //     try {
-//         const res = await axios.put('http://localhost:5000/api/profile', formData, {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setMessage(res.data.message); // success message
-//         setError('');
-//       } catch (err) {
-//         console.error('Error updating profile:', err);
-//         setMessage('');
-//         if (err.response && err.response.data && err.response.data.message) {
-//           setError(err.response.data.message);
-//         } else {
-//           setError('Something went wrong');
-//         }
-//       }
+//       const user = JSON.parse(localStorage.getItem('user'));
+//       console.log(user.token)
+//       const res = await axios.put(`${process.env.REACT_APP_URL}/api/profile`, formData, {
+//         headers: {
+//           Authorization: `Bearer ${user.token}`,
+//         },
+//       });
       
+
+//       const updatedUser = {
+//         ...user, // keeps token and anything else
+//         name: res.data.name,
+//         email: res.data.email,
+//         image: res.data.image,
+//       };
+
+//       localStorage.setItem('user', JSON.stringify(updatedUser));
+
+
+//       setMessage(res.data.message);
+//       setError('');
+//       setTimeout(() => {
+//         window.location.reload(); // This reloads the full page
+//       }, 2000);
+//     } catch (err) {
+//       setMessage('');
+//       if (err.response?.data?.message) {
+//         setError(err.response.data.message);
+//       } else {
+//         setError('Something went wrong');
+//       }
+//     }
 //   };
 
 //   return (
-//       <div>
-//         {userInfo?(
-//             <form onSubmit={handleSubmit}>
-//             <h2>Update Your Profile</h2>
-//             <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
-//             <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-//             <input type="file" onChange={e => setImage(e.target.files[0])} />
-//             <label>
-//               <input type="checkbox" checked={removeImage} onChange={() => setRemoveImage(!removeImage)} />
-//               Remove existing image
-//             </label>
-//             <input type="password" placeholder="Old Password" value={oldPassword} onChange={e => setOldPassword(e.target.value)} />
-//             <input type="password" placeholder="New Password" value={password} onChange={e => setPassword(e.target.value)} />
-//             <button type="submit">Save Changes</button>
-//           </form>
-//         ):(
-//             <p>Please Login first before accessing this page !</p>
-//         )}
+//     <div style={{ maxWidth: '500px', margin: 'auto' }}>
+//       <h2>Update Your Settings</h2>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           placeholder="New Name"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//           style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+//         />
+//         <input
+//           type="email"
+//           placeholder="New Email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+//         />
+//         <input
+//           type="file"
+//           onChange={(e) => setImage(e.target.files[0])}
+//           style={{ display: 'block', marginBottom: '10px' }}
+//         />
+//         <label style={{ display: 'block', marginBottom: '10px' }}>
+//           <input
+//             type="checkbox"
+//             checked={removeImage}
+//             onChange={(e) => setRemoveImage(e.target.checked)}
+//           />{" "}
+//           Remove current image
+//         </label>
+//         <Link to='/forgot-password'>Forgot password?</Link>
+//         <input
+//           type="password"
+//           placeholder="Old Password"
+//           value={oldPassword}
+//           onChange={(e) => setOldPassword(e.target.value)}
+//           style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+//         />
+//         <input
+//           type="password"
+//           placeholder="New Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+//         />
+//         <button type="submit" style={{ padding: '10px 20px' }}>Update Profile</button>
+//       </form>
 
-    
+//       {message && <p style={{ color: 'green', marginTop: '10px' }}>{message}</p>}
+//       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
 //     </div>
 //   );
 // };
@@ -84,8 +122,7 @@
 
 
 
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -99,10 +136,21 @@ const Settings = () => {
 
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [user, setUser] = useState(null);
+
+  const [showName, setShowName] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
+  const [showImage, setShowImage] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    const localUser = JSON.parse(localStorage.getItem('user'));
+    if (localUser) setUser(localUser);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
 
     if (name.trim()) formData.append('name', name);
@@ -115,87 +163,186 @@ const Settings = () => {
     }
 
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user.token)
       const res = await axios.put(`${process.env.REACT_APP_URL}/api/profile`, formData, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      
 
       const updatedUser = {
-        ...user, // keeps token and anything else
+        ...user,
         name: res.data.name,
         email: res.data.email,
         image: res.data.image,
       };
 
       localStorage.setItem('user', JSON.stringify(updatedUser));
-
-
       setMessage(res.data.message);
       setError('');
       setTimeout(() => {
-        window.location.reload(); // This reloads the full page
+        window.location.reload();
       }, 2000);
     } catch (err) {
       setMessage('');
-      if (err.response?.data?.message) {
-        setError(err.response.data.message);
-      } else {
-        setError('Something went wrong');
-      }
+      setError(err.response?.data?.message || 'Something went wrong');
     }
   };
 
+  const isFormValid = () => {
+    return (
+      name.trim() ||
+      email.trim() ||
+      image ||
+      removeImage ||
+      (oldPassword && password)
+    );
+  };
+
   return (
-    <div style={{ maxWidth: '500px', margin: 'auto' }}>
-      <h2>Update Your Settings</h2>
+    <div style={{ maxWidth: '80%', margin: 'auto', }}>
+      <h2 style={{marginBottom:'3vh'}}>Update Your Settings</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="New Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
-        />
-        <input
-          type="email"
-          placeholder="New Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
-        />
-        <input
-          type="file"
-          onChange={(e) => setImage(e.target.files[0])}
-          style={{ display: 'block', marginBottom: '10px' }}
-        />
-        <label style={{ display: 'block', marginBottom: '10px' }}>
-          <input
-            type="checkbox"
-            checked={removeImage}
-            onChange={(e) => setRemoveImage(e.target.checked)}
-          />{" "}
-          Remove current image
-        </label>
-        <Link to='forgot-password'>Forgot password?</Link>
-        <input
-          type="password"
-          placeholder="Old Password"
-          value={oldPassword}
-          onChange={(e) => setOldPassword(e.target.value)}
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
-        />
-        <input
-          type="password"
-          placeholder="New Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
-        />
-        <button type="submit" style={{ padding: '10px 20px' }}>Update Profile</button>
+        {/* Name Section */}
+        <div style={{ marginBottom: '10px' }}>
+          <div
+            onClick={() => setShowName(!showName)}
+            style={{ cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            {showName ? '▼' : '▶'} Change Name
+          </div>
+          {showName && (
+            <input
+              type="text"
+              placeholder="New Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              style={{
+                display: 'block',
+                marginTop: '5px',
+                marginBottom: '10px',
+                width: '100%',
+                transition: 'all 0.3s ease',
+              }}
+            />
+          )}
+        </div>
+
+        {/* Email Section */}
+        <div style={{ marginBottom: '10px' }}>
+          <div
+            onClick={() => setShowEmail(!showEmail)}
+            style={{ cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            {showEmail ? '▼' : '▶'} Change Email
+          </div>
+          {showEmail && (
+            <input
+              type="email"
+              placeholder="New Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{
+                display: 'block',
+                marginTop: '5px',
+                marginBottom: '10px',
+                width: '100%',
+                transition: 'all 0.3s ease',
+              }}
+            />
+          )}
+        </div>
+
+        {/* Image Section */}
+        <div style={{ marginBottom: '10px' }}>
+          <div
+            onClick={() => setShowImage(!showImage)}
+            style={{ cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            {showImage ? '▼' : '▶'} Update Profile Image
+          </div>
+          {showImage && (
+            <div style={{ marginTop: '5px' }}>
+              {user?.image ? (
+                <div style={{ marginBottom: '10px' }}>
+                  <p>Current Image:</p>
+                  <img
+                    src={user.image}
+                    alt="Old Profile"
+                    style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '10px' }}
+                  />
+                </div>
+              ) : (
+                <p>No profile image found.</p>
+              )}
+              <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+                style={{ display: 'block', marginBottom: '10px' }}
+              />
+              <label style={{ display: 'block', marginBottom: '10px' }}>
+                <input
+                  type="checkbox"
+                  checked={removeImage}
+                  onChange={(e) => setRemoveImage(e.target.checked)}
+                />{" "}
+                Remove current image
+              </label>
+            </div>
+          )}
+        </div>
+
+        {/* Password Section */}
+        <div style={{ marginBottom: '10px' }}>
+          <div
+            onClick={() => setShowPassword(!showPassword)}
+            style={{ cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            {showPassword ? '▼' : '▶'} Change Password
+          </div>
+          {showPassword && (
+            <div style={{ marginTop: '5px' }}>
+              <Link to="/forgot-password">Forgot password?</Link>
+              <input
+                type="password"
+                placeholder="Old Password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                style={{
+                  display: 'block',
+                  marginBottom: '10px',
+                  width: '50%',
+                  transition: 'all 0.3s ease',
+                }}
+              />
+              <input
+                type="password"
+                placeholder="New Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={{
+                  display: 'block',
+                  marginBottom: '10px',
+                  width: '50%',
+                  transition: 'all 0.3s ease',
+                }}
+              />
+            </div>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          style={{
+            padding: '10px 20px',
+            background: isFormValid() ? '#007bff' : '#ccc',
+            color: '#fff',
+            border: 'none',
+            cursor: isFormValid() ? 'pointer' : 'not-allowed',
+          }}
+          disabled={!isFormValid()}
+        >
+          Update Profile
+        </button>
       </form>
 
       {message && <p style={{ color: 'green', marginTop: '10px' }}>{message}</p>}

@@ -368,11 +368,11 @@ const AllBlogs = () => {
               .map((post) => (
                 <Link style={{ textDecoration: 'none', color: 'black' }} key={post._id} to={`/blog/${post._id}`}>
                   <div className='ppdetails' key={post._id}>
-                    <div className='ppimdg'>
+                    
                       <img className='ppimg' src={post.image || 'fallback-image-url.jpg'} alt={post.title} />
-                    </div>
+                    
                     <div className='ppod'>
-                      <h2>{post.title}</h2>
+                      <h2 style={{fontSize:'1rem',display:'flex'}}>{post.title}</h2>
                       <div className='gr'>{new Date(post.createdAt).toLocaleDateString()}</div>
                     </div>
                   </div>
@@ -503,17 +503,21 @@ const AllBlogs = () => {
       </div>
 
       {/* Pagination Buttons */}
-      <div style={{ textAlign: 'center', marginTop: '2rem', maxWidth:'90%', margin:'auto' }}>
+      <div style={{ textAlign: 'center', marginTop: '10vh', maxWidth:'90%', margin:'auto' ,display:'flex',alignItems:'center',justifyContent:'center'}}>
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
           style={{
             marginRight: '10px',
-            padding: '0.5rem 1rem',
+            // padding: '0.5rem 1rem',
             backgroundColor: '#ddd',
-            border: 'none',
-            borderRadius: '50px',
-            width: '2.2rem',
+            // border: 'none',
+            // borderRadius: '50px',
+            // width: '2.2rem',
+            height:'40px',
+            width:'40px',
+            borderRadius:'50%',
+            paddingTop:'5px',
             cursor: currentPage === 1 ? 'not-allowed' : 'pointer'
           }}
         >
@@ -543,11 +547,14 @@ const AllBlogs = () => {
           disabled={currentPage === totalPages}
           style={{
             marginLeft: '10px',
-            padding: '0.5rem 1rem',
+            // padding: '0.5rem 1rem',
+            // paddingTop:'7px',
             backgroundColor: '#ddd',
-            border: 'none',
-            borderRadius: '50px',
-            width: '2.2rem',
+            height:'40px',
+            width:'40px',
+            border:'none',
+            borderRadius:'50%',
+            paddingTop:'4px',
             cursor: currentPage === totalPages ? 'not-allowed' : 'pointer'
           }}
         >
