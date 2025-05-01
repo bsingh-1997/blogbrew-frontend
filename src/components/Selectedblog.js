@@ -30,23 +30,26 @@ const SelectedBlog = () => {
 
 
   const { id } = useParams();
-  const [blog, setBlog] = useState(null);
+  const [blog, setBlog] = useState();
   const [commentText, setCommentText] = useState({});
 
   const fetchBlog = async () => {
     try {
+      // const res = await axios.get(`${process.env.REACT_APP_URL}/api/${id}`);
       const res = await axios.get(`${process.env.REACT_APP_URL}/api/${id}`);
       setBlog(res.data);
+      
     } catch (err) {
       console.error('Error fetching blog:', err);
     }
   };
 
   useEffect(() => {
+    
     fetchBlog();
   }, [id]);
-
-
+  
+  console.log(blog)
 
   const likePost = async (postId) => {
     try {

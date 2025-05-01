@@ -90,8 +90,8 @@ const Login = () => {
           {loading ? 'Logging in...' : 'Login'} 
         </button>
       </form>
-      <Link style={{ marginLeft:'30%'}} to ="/forgot-password" style={{
-        textDecoration:'none',color:'blue'
+      <Link  to ="/forgot-password" style={{
+        textDecoration:'none',color:'blue',marginLeft:'30%'
       }}>Forgot Password?</Link>
       <ToastContainer />
       <div>
