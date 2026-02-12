@@ -93,11 +93,22 @@ h1{
 .BlogContent{
     display: flex;
     /* background-color: red; */
-    height: 40vh;
+    /* height: 40vh; */
     overflow: hidden;
     /* flex-wrap: wrap; */
     width: 100%;
     /* background-color: aqua; */
+}
+.BlogContentAll{
+    display: flex;
+    /* background-color: red; */
+    height: 30vh;
+    overflow: hidden;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    /* background-color: aqua; */
+      -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .RightHomeSection{
@@ -390,7 +401,7 @@ max-width: 100%;
     width: 100%;
     /* background-color: aqua; */
     overflow: hidden;
-    height: 30vh;
+    /* height: 30vh; */
 }
 .addcmnt{
     /* background-color: aqua; */

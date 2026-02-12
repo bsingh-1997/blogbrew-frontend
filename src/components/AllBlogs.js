@@ -280,7 +280,7 @@ const AllBlogs = () => {
                   gap:'1vh'
                 }} >
 
-                  <div className='BlogContent gr'>{post.content}</div>
+                  <div className='BlogContentAll gr'>{post.content}</div>
                   <Link style={{ color: 'blue', textDecoration: 'none' }} to={`/blog/${post._id}`}>
                     <div>Read more...</div>
                   </Link>

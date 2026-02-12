@@ -156,7 +156,7 @@ const SelectedBlog = () => {
           <div>Category: {blog.category || 'Uncategorized'}</div>
         </div>
 
-        <div className='BlogContent gr'>{blog.content}</div>
+        <div className='BlogContent gr' style={{whiteSpace: "pre-wrap" }}>{blog.content}</div>
 
         {/* Comments section */}
         <div  className='comments'>
