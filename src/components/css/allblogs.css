@@ -407,7 +407,9 @@ max-width: 100%;
     /* background-color: aqua; */
     width: 70vw;
 }
-
+.blogcategort{
+    display: none;
+}
 
 
   }

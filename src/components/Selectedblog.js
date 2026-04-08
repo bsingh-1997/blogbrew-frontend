@@ -153,10 +153,16 @@ const SelectedBlog = () => {
           <img className='userImage' src={blog.user?.image || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'} />
           <div><small>By: {blog.user?.name || 'Unknown'}</small></div>
           <div>{formatDistanceToNow(new Date(blog.createdAt), { addSuffix: true })}</div>
-          <div>Category: {blog.category || 'Uncategorized'}</div>
+          <div className='blogcategort'>Category: {blog.category || 'Uncategorized'}</div>
         </div>
+{/* 
+        <div className='BlogContent gr'  dangerouslySetInnerHTML={{ __html: blog.content }} style={{whiteSpace: "pre-wrap" }}>{blog.content}</div> */}
 
-        <div className='BlogContent gr' style={{whiteSpace: "pre-wrap" }}>{blog.content}</div>
+  <div
+  className="BlogContent gr"
+  style={{ whiteSpace: "pre-wrap" }}
+  dangerouslySetInnerHTML={{ __html: blog.content }}
+></div>
 
         {/* Comments section */}
         <div  className='comments'>
